@@ -1,0 +1,9 @@
+(a)Top 5 employees (employee id and employee name) with highest rating. (In case two
+employees have same rating, employee with name coming first in dictionary should get
+preference) 
+
+emp_details = LOAD 'employee_details.txt' USING PigStorage(',') AS (emp_id:int, emp_name:chararray, emp_salary:int, emp_rating:int);
+emp_order = order emp_details by emp_rating desc, emp_  name asc;
+five_emp = LIMIT emp_order 5;
+emp = foreach lim generate emp_id, emp_name;
+dump emp;
