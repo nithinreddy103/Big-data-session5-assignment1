@@ -1,0 +1,3 @@
+emp_details = LOAD 'employee_details.txt' USING PigStorage(',') AS (emp_id:int, emp_name:chararray, emp_salary:int, emp_rating:int);
+
+emp_expenses = LOAD 'employee_expenses.txt' USING PigStorage('\t') AS (emp_id:int, emp_expenses:int);
