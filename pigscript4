@@ -1,0 +1,9 @@
+(d) List of employees (employee id and employee name) having entries in employee_expenses
+file. 
+
+emp_details = LOAD 'employee_details.txt' USING PigStorage(',') AS (emp_id:int, emp_name:chararray, emp_salary:int, emp_rating:int);
+emp_expeses = LOAD 'employee_expenses.txt' USING PigStorage('\t') AS (emp_id:int, emp_expenses:int);
+emp_join2 = join emp_details by emp_id, emp_expenses by id;
+emp3 = foreach emp_join2 generate $0,$1;
+distnct = distinct emp3;
+dump distnct;
